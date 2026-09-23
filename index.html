@@ -1,177 +1,414 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WanderPH Tours — Curated Philippine Tour Packages</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<nav>
-  <div class="navbar">
-    <div class="brand">🧭 Wander<span>PH</span> Tours</div>
-    <div class="navlinks">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a>
-      <a href="#packages">Packages</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-    </div>
-    <form class="searchbar" onsubmit="return doSearch(event)">
-      <input id="searchInput" placeholder="Search packages">
-      <button type="submit">Go</button>
-    </form>
-  </div>
-</nav>
-
-<section class="hero" id="home">
-  <h1>Curated Tour Packages, Across the Philippines</h1>
-  <p>WanderPH Tours designs all-inclusive, guide-led itineraries — from island-hopping in Palawan to heritage treks in the Cordillera — so you can book a complete trip in one place.</p>
-  <a class="btn" href="#packages">Browse Packages</a>
-  <a class="btn outline" href="#contact">Request a Quote</a>
-</section>
-
-<section id="about" class="wrap">
-  <h2>About WanderPH Tours</h2>
-  <p class="subtitle">A local travel agency, built around small-group packages</p>
-  <p style="max-width:640px;margin:0 auto 1em;text-align:center;">WanderPH Tours is a Philippine-based travel agency specializing in pre-planned, all-inclusive tour packages rather than piecemeal bookings. Each package bundles transport, accommodation, local guides, and activities into one fixed itinerary and price, and is run in partnership with community-based guide cooperatives at every destination — keeping tourism income local and groups small.</p>
-</section>
-
-<section id="services" class="alt">
-  <div class="wrap">
-    <h2>What's Included in Every Package</h2>
-    <p class="subtitle">Our services</p>
-    <div class="grid">
-      <div class="pkg"><div class="body"><h3>🚐 Transport & Transfers</h3><p>Airport pickup, inter-destination transfers, and private van transport included.</p></div></div>
-      <div class="pkg"><div class="body"><h3>🏨 Accommodation</h3><p>Vetted homestays, guesthouses, and mid-range hotels booked on your behalf.</p></div></div>
-      <div class="pkg"><div class="body"><h3>🧑‍🤝‍🧑 Local Guides</h3><p>Licensed community guides for every trek, cave, or cultural site.</p></div></div>
-      <div class="pkg"><div class="body"><h3>🍲 Meals</h3><p>Breakfast daily and select local meals, as noted per package.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="packages" class="wrap">
-  <h2>Tour Packages</h2>
-  <p class="subtitle">Fixed itineraries, transparent pricing (per person, PHP)</p>
-  <div class="filterbar">
-    <button class="active" onclick="filterPkg('all',this)">All</button>
-    <button onclick="filterPkg('adventure',this)">Adventure</button>
-    <button onclick="filterPkg('heritage',this)">Heritage</button>
-    <button onclick="filterPkg('island',this)">Island</button>
-  </div>
-  <div class="grid" id="pkgGrid">
-
-    <div class="pkg" data-tag="heritage"><div class="img" style="background-image:url('images/province/sagada-province.jpeg'); background-size:cover; background-position:center;"></div><div class="body">
-      <div class="place">SAGADA, MOUNTAIN PROVINCE</div><h3>Heritage Highlands</h3>
-      <p>Caves, hanging coffins, and sunrise viewpoints in the Cordillera.</p>
-      <ul class="itin"><li>Day 1: Kiltepan sunrise, weaving village</li><li>Day 2: Sumaguing Cave, Echo Valley</li></ul>
-      <div class="price">₱3,500 <span>/ 2D1N</span></div><div class="meta">Guide, homestay, meals included</div>
-    </div></div>
-
-    <div class="pkg" data-tag="island"><div class="img" style="background-image:url('images/province/el-nido-province.jpg'); background-size:cover; background-position:center;">️</div><div class="body">
-      <div class="place">EL NIDO, PALAWAN</div><h3>Island Hopping Escape</h3>
-      <p>Lagoons, limestone cliffs, and snorkeling across four island tours.</p>
-      <ul class="itin"><li>Day 1: Big Lagoon, Secret Lagoon (Tour A)</li><li>Day 2: Shimizu Island, Matinloc (Tour C)</li><li>Day 3: Free day / beach</li></ul>
-      <div class="price">₱7,900 <span>/ 3D2N</span></div><div class="meta">Boat tours, resort stay, breakfast</div>
-    </div></div>
-
-    <div class="pkg" data-tag="adventure"><div class="img" style="background-image:url('images/province/mt-pulag.jpg'); background-size:cover; background-position:center;"></div><div class="body">
-      <div class="place">MT. PULAG, BENGUET</div><h3>Sea of Clouds Trek</h3>
-      <p>Summit trek to the Philippines' third-highest peak for sunrise above the clouds.</p>
-      <ul class="itin"><li>Day 1: Ranger station, ascend to camp</li><li>Day 2: Pre-dawn summit push, descend</li></ul>
-      <div class="price">₱2,800 <span>/ 2D1N</span></div><div class="meta">Guide, permits, camping gear</div>
-    </div></div>
-
-    <div class="pkg" data-tag="heritage"><div class="img" style="background-image:url('images/province/vegan.jpeg'); background-size:cover; background-position:center;"></div><div class="body">
-      <div class="place">VIGAN, ILOCOS SUR</div><h3>Colonial Heritage Walk</h3>
-      <p>Cobblestone streets, kalesa rides, and Spanish-era architecture.</p>
-      <ul class="itin"><li>Day 1: Calle Crisologo, pottery village</li><li>Day 2: Bantay Bell Tower, museum tour</li></ul>
-      <div class="price">₱4,200 <span>/ 2D1N</span></div><div class="meta">Heritage inn, kalesa tour, meals</div>
-    </div></div>
-
-    <div class="pkg" data-tag="island adventure"><div class="img" style="background-image:url('images/province/coron-palawan.jpeg'); background-size:cover; background-position:center;"></div><div class="body">
-      <div class="place">CORON, PALAWAN</div><h3>Wreck Diving & Lagoons</h3>
-      <p>WWII shipwreck snorkeling plus Kayangan Lake and Twin Lagoon.</p>
-      <ul class="itin"><li>Day 1: Kayangan Lake, Twin Lagoon</li><li>Day 2: Shipwreck snorkeling tour</li></ul>
-      <div class="price">₱6,500 <span>/ 3D2N</span></div><div class="meta">Boat tours, gear, resort stay</div>
-    </div></div>
-
-    <div class="pkg" data-tag="adventure"><div class="img" style="background-image:url('images/province/ifugao.jpg'); background-size:cover; background-position:center;"></div><div class="body">
-      <div class="place">BATAD, IFUGAO</div><h3>Rice Terraces Trek</h3>
-      <p>Trek into the amphitheater-shaped Batad terraces, ending at Tappiya Falls.</p>
-      <ul class="itin"><li>Day 1: Saddle viewpoint, village trek</li><li>Day 2: Tappiya Falls, swim, return</li></ul>
-      <div class="price">₱3,100 <span>/ 2D1N</span></div><div class="meta">Guide, guesthouse, breakfast</div>
-    </div></div>
-
-  </div>
-</section>
-
-<section class="alt" id="gallery">
-  <div class="wrap">
-    <h2>Gallery</h2>
-    <p class="subtitle">Moments from past tours</p>
-    <div class="slider">
-      <div class="slides" id="slides">
-        <div class="slide" style="background-image:url('images/gallery/El-Nido-lagoon-hopping.jpg'); background-size:cover; background-position:center;">🏝️ El Nido lagoon hopping</div>
-        <div class="slide" style="background-image:url('images/gallery/sagada-cave.jpg'); background-size:cover; background-position:center;">⛰️ Sagada cave connection</div>
-        <div class="slide" style="background-image:url('images/gallery/batad-rice-tera.jpeg'); background-size:cover; background-position:center;">🌾 Batad rice terraces</div>
-        <div class="slide" style="background-image:url('images/gallery/coron-wreck-snorkeling.jpg'); background-size:cover; background-position:center;">🤿 Coron wreck snorkeling</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>WanderPH Tours — Curated Philippine Tour Packages</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="brand">🧭 Wander<span>PH</span> Tours</div>
+        <div class="navlinks">
+          <a href="#home">Home</a><a href="#about">About</a
+          ><a href="#services">Services</a> <a href="#packages">Packages</a
+          ><a href="#gallery">Gallery</a><a href="#faq">FAQ</a
+          ><a href="#contact">Contact</a>
+        </div>
+        <form class="searchbar" onsubmit="return doSearch(event);">
+          <input id="searchInput" placeholder="Search packages" />
+          <button type="submit">Go</button>
+        </form>
       </div>
-      <button class="slidebtn prev" onclick="moveSlide(-1)">‹</button>
-      <button class="slidebtn next" onclick="moveSlide(1)">›</button>
-    </div>
-    <div class="dots" id="dots"></div>
-  </div>
-</section>
+    </nav>
 
-<section class="wrap" id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div style="max-width:640px;margin:0 auto;">
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Is airfare included in packages? <span>+</span></div>
-      <div class="faq-a"><p>No — package prices cover land arrangements only. We can help book flights on request.</p></div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Can packages be customized? <span>+</span></div>
-      <div class="faq-a"><p>Yes, itineraries can be adjusted for private groups; contact us for a custom quote.</p></div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What are your office hours? <span>+</span></div>
-      <div class="faq-a"><p>Our booking office is open daily, 8:00 AM – 6:00 PM (PH time).</p></div>
-    </div>
-  </div>
-</section>
+    <section class="hero" id="home">
+      <h1>Curated Tour Packages, Across the Philippines</h1>
+      <p>
+        WanderPH Tours designs all-inclusive, guide-led itineraries — from
+        island-hopping in Palawan to heritage treks in the Cordillera — so you
+        can book a complete trip in one place.
+      </p>
+      <a class="btn" href="#packages">Browse Packages</a>
+      <a class="btn outline" href="#contact">Request a Quote</a>
+    </section>
 
-<section class="alt" id="contact">
-  <div class="wrap">
-    <h2>Contact & Book</h2>
-    <div class="mapbox">
-      <p style="margin-bottom:10px;">📍 Booking Office: Manila, Philippines (tours depart nationwide)</p>
-      <iframe
-        src="https://maps.google.com/maps?q=Manila,Philippines&z=12&output=embed"
-        width="100%" height="250" style="border:0;border-radius:8px;"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <p style="margin-top:10px;">✉️ book@wanderph.tours &nbsp; | &nbsp; 📞 +63 900 000 0000</p>
-    </div>
+    <section id="about" class="wrap">
+      <h2>About WanderPH Tours</h2>
+      <p class="subtitle">
+        A local travel agency, built around small-group packages
+      </p>
+      <p style="max-width: 640px; margin: 0 auto 1em; text-align: center">
+        WanderPH Tours is a Philippine-based travel agency specializing in
+        pre-planned, all-inclusive tour packages rather than piecemeal bookings.
+        Each package bundles transport, accommodation, local guides, and
+        activities into one fixed itinerary and price, and is run in partnership
+        with community-based guide cooperatives at every destination — keeping
+        tourism income local and groups small.
+      </p>
+    </section>
 
-    <h2 style="margin-top:46px;">Request a Booking</h2>
-    <form class="booking" onsubmit="return submitBooking(event)">
-      <label>Full Name</label><input required placeholder="Juan Dela Cruz">
-      <label>Email</label><input type="email" required placeholder="you@email.com">
-      <label>Package</label>
-      <select><option>Heritage Highlands — Sagada</option><option>Island Hopping Escape — El Nido</option><option>Sea of Clouds Trek — Mt. Pulag</option><option>Colonial Heritage Walk — Vigan</option><option>Wreck Diving & Lagoons — Coron</option><option>Rice Terraces Trek — Batad</option></select>
-      <label>Preferred Date</label><input type="date" required>
-      <label>Guests</label><input type="number" min="1" value="2">
-      <button class="btn" style="margin-top:16px;width:100%;" type="submit">Submit Request</button>
-      <div class="confirm" id="confirmMsg">✅ Thank you! We'll email your itinerary and quote shortly.</div>
-    </form>
-  </div>
-</section>
+    <section id="services" class="alt">
+      <div class="wrap">
+        <h2>What's Included in Every Package</h2>
+        <p class="subtitle">Our services</p>
+        <div class="grid">
+          <div class="pkg">
+            <div class="body">
+              <h3>🚐 Transport & Transfers</h3>
+              <p>
+                Airport pickup, inter-destination transfers, and private van
+                transport included.
+              </p>
+            </div>
+          </div>
+          <div class="pkg">
+            <div class="body">
+              <h3>🏨 Accommodation</h3>
+              <p>
+                Vetted homestays, guesthouses, and mid-range hotels booked on
+                your behalf.
+              </p>
+            </div>
+          </div>
+          <div class="pkg">
+            <div class="body">
+              <h3>🧑‍🤝‍🧑 Local Guides</h3>
+              <p>
+                Licensed community guides for every trek, cave, or cultural
+                site.
+              </p>
+            </div>
+          </div>
+          <div class="pkg">
+            <div class="body">
+              <h3>🍲 Meals</h3>
+              <p>
+                Breakfast daily and select local meals, as noted per package.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p style="color:#dff0ee;">WanderPH Tours &middot; Curated, Guide-Led Tour Packages Across the Philippines</p>
-  <p style="color:#b5b0a2;">© 2026 WanderPH Tours. Partnered with community-based local guide cooperatives.</p>
-</footer>
+    <section id="packages" class="wrap">
+      <h2>Tour Packages</h2>
+      <p class="subtitle">
+        Fixed itineraries, transparent pricing (per person, PHP)
+      </p>
+      <div class="filterbar">
+        <button class="active" onclick="filterPkg('all', this)">All</button>
+        <button onclick="filterPkg('adventure', this)">Adventure</button>
+        <button onclick="filterPkg('heritage', this)">Heritage</button>
+        <button onclick="filterPkg('island', this)">Island</button>
+      </div>
+      <div class="grid" id="pkgGrid">
+        <div class="pkg" data-tag="heritage">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/sagada-province.jpeg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          ></div>
+          <div class="body">
+            <div class="place">SAGADA, MOUNTAIN PROVINCE</div>
+            <h3>Heritage Highlands</h3>
+            <p>
+              Caves, hanging coffins, and sunrise viewpoints in the Cordillera.
+            </p>
+            <ul class="itin">
+              <li>Day 1: Kiltepan sunrise, weaving village</li>
+              <li>Day 2: Sumaguing Cave, Echo Valley</li>
+            </ul>
+            <div class="price">₱3,500 <span>/ 2D1N</span></div>
+            <div class="meta">Guide, homestay, meals included</div>
+          </div>
+        </div>
 
-<script src="script.js"></script>
-</body>
+        <div class="pkg" data-tag="island">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/el-nido-province.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          >
+            ️
+          </div>
+          <div class="body">
+            <div class="place">EL NIDO, PALAWAN</div>
+            <h3>Island Hopping Escape</h3>
+            <p>
+              Lagoons, limestone cliffs, and snorkeling across four island
+              tours.
+            </p>
+            <ul class="itin">
+              <li>Day 1: Big Lagoon, Secret Lagoon (Tour A)</li>
+              <li>Day 2: Shimizu Island, Matinloc (Tour C)</li>
+              <li>Day 3: Free day / beach</li>
+            </ul>
+            <div class="price">₱7,900 <span>/ 3D2N</span></div>
+            <div class="meta">Boat tours, resort stay, breakfast</div>
+          </div>
+        </div>
+
+        <div class="pkg" data-tag="adventure">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/mt-pulag.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          ></div>
+          <div class="body">
+            <div class="place">MT. PULAG, BENGUET</div>
+            <h3>Sea of Clouds Trek</h3>
+            <p>
+              Summit trek to the Philippines' third-highest peak for sunrise
+              above the clouds.
+            </p>
+            <ul class="itin">
+              <li>Day 1: Ranger station, ascend to camp</li>
+              <li>Day 2: Pre-dawn summit push, descend</li>
+            </ul>
+            <div class="price">₱2,800 <span>/ 2D1N</span></div>
+            <div class="meta">Guide, permits, camping gear</div>
+          </div>
+        </div>
+
+        <div class="pkg" data-tag="heritage">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/vegan.jpeg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          ></div>
+          <div class="body">
+            <div class="place">VIGAN, ILOCOS SUR</div>
+            <h3>Colonial Heritage Walk</h3>
+            <p>
+              Cobblestone streets, kalesa rides, and Spanish-era architecture.
+            </p>
+            <ul class="itin">
+              <li>Day 1: Calle Crisologo, pottery village</li>
+              <li>Day 2: Bantay Bell Tower, museum tour</li>
+            </ul>
+            <div class="price">₱4,200 <span>/ 2D1N</span></div>
+            <div class="meta">Heritage inn, kalesa tour, meals</div>
+          </div>
+        </div>
+
+        <div class="pkg" data-tag="island adventure">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/coron-palawan.jpeg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          ></div>
+          <div class="body">
+            <div class="place">CORON, PALAWAN</div>
+            <h3>Wreck Diving & Lagoons</h3>
+            <p>WWII shipwreck snorkeling plus Kayangan Lake and Twin Lagoon.</p>
+            <ul class="itin">
+              <li>Day 1: Kayangan Lake, Twin Lagoon</li>
+              <li>Day 2: Shipwreck snorkeling tour</li>
+            </ul>
+            <div class="price">₱6,500 <span>/ 3D2N</span></div>
+            <div class="meta">Boat tours, gear, resort stay</div>
+          </div>
+        </div>
+
+        <div class="pkg" data-tag="adventure">
+          <div
+            class="img"
+            style="
+              background-image: url(&quot;images/province/ifugao.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          ></div>
+          <div class="body">
+            <div class="place">BATAD, IFUGAO</div>
+            <h3>Rice Terraces Trek</h3>
+            <p>
+              Trek into the amphitheater-shaped Batad terraces, ending at
+              Tappiya Falls.
+            </p>
+            <ul class="itin">
+              <li>Day 1: Saddle viewpoint, village trek</li>
+              <li>Day 2: Tappiya Falls, swim, return</li>
+            </ul>
+            <div class="price">₱3,100 <span>/ 2D1N</span></div>
+            <div class="meta">Guide, guesthouse, breakfast</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="gallery">
+      <div class="wrap">
+        <h2>Gallery</h2>
+        <p class="subtitle">Moments from past tours</p>
+        <div class="slider">
+          <div class="slides" id="slides">
+            <div
+              class="slide"
+              style="
+                background-image: url(&quot;images/gallery/El-Nido-lagoon-hopping.jpg&quot;);
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              🏝️ El Nido lagoon hopping
+            </div>
+            <div
+              class="slide"
+              style="
+                background-image: url(&quot;images/gallery/sagada-cave.jpg&quot;);
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              ⛰️ Sagada cave connection
+            </div>
+            <div
+              class="slide"
+              style="
+                background-image: url(&quot;images/gallery/batad-rice-tera.jpeg&quot;);
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              🌾 Batad rice terraces
+            </div>
+            <div
+              class="slide"
+              style="
+                background-image: url(&quot;images/gallery/coron-wreck-snorkeling.jpg&quot;);
+                background-size: cover;
+                background-position: center;
+              "
+            >
+              🤿 Coron wreck snorkeling
+            </div>
+          </div>
+          <button class="slidebtn prev" onclick="moveSlide(-1)">‹</button>
+          <button class="slidebtn next" onclick="moveSlide(1)">›</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <section class="wrap" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div style="max-width: 640px; margin: 0 auto">
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">
+            Is airfare included in packages? <span>+</span>
+          </div>
+          <div class="faq-a">
+            <p>
+              No — package prices cover land arrangements only. We can help book
+              flights on request.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Can packages be customized? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Yes, itineraries can be adjusted for private groups; contact us
+              for a custom quote.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">What are your office hours? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Our booking office is open daily, 8:00 AM – 6:00 PM (PH time).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="contact">
+      <div class="wrap">
+        <h2>Contact & Book</h2>
+        <div class="mapbox">
+          <p style="margin-bottom: 10px">
+            📍 Booking Office: Manila, Philippines (tours depart nationwide)
+          </p>
+          <iframe
+            src="https://maps.google.com/maps?q=Manila,Philippines&z=12&output=embed"
+            width="100%"
+            height="250"
+            style="border: 0; border-radius: 8px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+          <p style="margin-top: 10px">
+            ✉️ book@wanderph.tours &nbsp; | &nbsp; 📞 +63 900 000 0000
+          </p>
+        </div>
+
+        <h2 style="margin-top: 46px">Request a Booking</h2>
+        <form class="booking" onsubmit="return submitBooking(event);">
+          <label>Full Name</label
+          ><input required placeholder="Juan Dela Cruz" /> <label>Email</label
+          ><input type="email" required placeholder="you@email.com" />
+          <label>Package</label>
+          <select>
+            <option>Heritage Highlands — Sagada</option>
+            <option>Island Hopping Escape — El Nido</option>
+            <option>Sea of Clouds Trek — Mt. Pulag</option>
+            <option>Colonial Heritage Walk — Vigan</option>
+            <option>Wreck Diving & Lagoons — Coron</option>
+            <option>Rice Terraces Trek — Batad</option>
+          </select>
+          <label>Preferred Date</label><input type="date" required />
+          <label>Guests</label><input type="number" min="1" value="2" />
+          <button
+            class="btn"
+            style="margin-top: 16px; width: 100%"
+            type="submit"
+          >
+            Submit Request
+          </button>
+          <div class="confirm" id="confirmMsg">
+            ✅ Thank you! We'll email your itinerary and quote shortly.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p style="color: #dff0ee">
+        WanderPH Tours &middot; Curated, Guide-Led Tour Packages Across the
+        Philippines
+      </p>
+      <p style="color: #b5b0a2">
+        © 2026 WanderPH Tours. Partnered with community-based local guide
+        cooperatives.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
